@@ -44,4 +44,7 @@ public interface CarRepo extends JpaRepository<Car, Long> {
     @Query("update Car c set c.brand = :brand, c.weight = :weight, c.model = :model, c.year = :year, c.color = :color where c.id = :id")
     void updateCarById(long id, String brand, String model, int year, String color, double weight);
 
+    @Query("select c from Car c where c.year = :year and c.weight <= :weight")
+    List<Car> findCarsByYearAndMaxWeight(int year, double weight);
+
 }

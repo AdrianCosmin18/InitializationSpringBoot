@@ -91,7 +91,12 @@ public class CarController {
         carRepo.updateCarById(id, car.getBrand(), car.getModel(), car.getYear(), car.getColor(), car.getWeight());
     }
 
-    //4
+    //4) nu merge <=> nu ret nimic
+    @GetMapping("cars-by-year-and-max-weight/{year}")
+    public List<Car> getCarsByYearAndMaxWeight(@PathVariable int year, @RequestParam(value = "weight") double weight){
+        return carRepo.findCarsByYearAndMaxWeight(year, weight);
+    }
+
 
 
 }
